@@ -8,7 +8,6 @@ import android.os.Looper
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.isVisible
 import androidx.preference.PreferenceDialogController
@@ -115,7 +114,7 @@ class MainActivity : BaseActivity<MainActivityBinding>() {
         bottomNavAnimator = ViewHeightAnimator(binding.bottomNav)
 
         // Set behavior of bottom nav
-        setBottomNavbarBehaviorOnScroll()
+        setBottomBarBehaviorOnScroll()
         binding.bottomNav.setOnNavigationItemSelectedListener { item ->
             val id = item.itemId
 
@@ -365,9 +364,10 @@ class MainActivity : BaseActivity<MainActivityBinding>() {
             !isConfirmingExit
     }
 
-    private fun setBottomNavbarBehaviorOnScroll() {
+    private fun setBottomBarBehaviorOnScroll() {
         val layoutParams = binding.bottomNav.layoutParams as CoordinatorLayout.LayoutParams
-        layoutParams.behavior = if (preferences.hideNavbar().get()) HideBottomViewOnScrollBehavior<ConstraintLayout>() else null
+        layoutParams.behavior =
+            if (preferences.hideBottomBar().get()) HideBottomViewOnScrollBehavior<View>() else null
     }
 
     fun setSelectedNavItem(itemId: Int) {
@@ -399,7 +399,7 @@ class MainActivity : BaseActivity<MainActivityBinding>() {
         if (to is RootController) {
             // Always show bottom nav again when returning to a RootController
             showBottomNav(visible = true, collapse = from !is RootController)
-            setBottomNavbarBehaviorOnScroll()
+            setBottomBarBehaviorOnScroll()
         }
 
         if (from is TabbedController) {
@@ -437,7 +437,7 @@ class MainActivity : BaseActivity<MainActivityBinding>() {
 
     fun showBottomNav(visible: Boolean, collapse: Boolean = false) {
         val layoutParams = binding.bottomNav.layoutParams as CoordinatorLayout.LayoutParams
-        val bottomViewNavigationBehavior: HideBottomViewOnScrollBehavior<View>? = layoutParams.behavior as? HideBottomViewOnScrollBehavior
+        val bottomViewNavigationBehavior = layoutParams.behavior as? HideBottomViewOnScrollBehavior
         if (visible) {
             if (collapse) {
                 bottomNavAnimator.expand()
