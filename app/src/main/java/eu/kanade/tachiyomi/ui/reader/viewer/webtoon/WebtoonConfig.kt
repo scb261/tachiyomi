@@ -26,7 +26,7 @@ class WebtoonConfig(
         private set
 
     // SY -->
-    var usePageTransitionsWebtoon = false
+    var usePageTransitions = false
 
     var enableZoomOut = false
         private set
@@ -58,7 +58,7 @@ class WebtoonConfig(
             .register({ continuesCropBorders = it }, { imagePropertyChangedListener?.invoke() })
 
         preferences.pageTransitionsWebtoon()
-            .register({ usePageTransitionsWebtoon = it }, { imagePropertyChangedListener?.invoke() })
+            .register({ usePageTransitions = it }, { imagePropertyChangedListener?.invoke() })
         // SY <--
     }
 

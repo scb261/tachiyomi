@@ -30,7 +30,7 @@ class PagerConfig(
         private set
 
     // SY -->
-    var usePageTransitionsPager = false
+    var usePageTransitions = false
     // SY <--
 
     init {
@@ -51,7 +51,7 @@ class PagerConfig(
 
         // SY -->
         preferences.pageTransitionsPager()
-            .register({ usePageTransitionsPager = it }, { imagePropertyChangedListener?.invoke() })
+            .register({ usePageTransitions = it }, { imagePropertyChangedListener?.invoke() })
         // SY <--
     }
 

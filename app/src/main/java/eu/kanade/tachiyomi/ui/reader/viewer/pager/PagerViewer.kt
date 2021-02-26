@@ -273,7 +273,7 @@ abstract class PagerViewer(val activity: ReaderActivity) : BaseViewer {
      */
     protected open fun moveRight() {
         if (pager.currentItem != adapter.count - 1) {
-            pager.setCurrentItem(pager.currentItem + 1, config.usePageTransitionsPager)
+            pager.setCurrentItem(pager.currentItem + 1, config.usePageTransitions)
         }
     }
 
@@ -282,7 +282,7 @@ abstract class PagerViewer(val activity: ReaderActivity) : BaseViewer {
      */
     protected open fun moveLeft() {
         if (pager.currentItem != 0) {
-            pager.setCurrentItem(pager.currentItem - 1, config.usePageTransitionsPager)
+            pager.setCurrentItem(pager.currentItem - 1, config.usePageTransitions)
         }
     }
 
