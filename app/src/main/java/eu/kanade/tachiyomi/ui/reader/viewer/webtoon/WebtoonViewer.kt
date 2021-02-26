@@ -253,7 +253,7 @@ class WebtoonViewer(val activity: ReaderActivity, val isContinuous: Boolean = tr
      * Scrolls up by [scrollDistance].
      */
     private fun scrollUp() {
-        if (config.usePageTransitions) {
+        if (config.usePageTransitionsWebtoon) {
             recycler.smoothScrollBy(0, -scrollDistance)
         } else {
             recycler.scrollBy(0, -scrollDistance)
@@ -271,7 +271,7 @@ class WebtoonViewer(val activity: ReaderActivity, val isContinuous: Boolean = tr
                 val position = adapter.items.indexOf(currentPage)
                 val nextItem = adapter.items.getOrNull(position + 1)
                 if (nextItem is ReaderPage) {
-                    if (config.usePageTransitions) {
+                    if (config.usePageTransitionsWebtoon) {
                         recycler.smoothScrollToPosition(position + 1)
                     } else {
                         recycler.scrollToPosition(position + 1)
@@ -285,7 +285,7 @@ class WebtoonViewer(val activity: ReaderActivity, val isContinuous: Boolean = tr
 
     private fun scrollDownBy() {
         // SY <--
-        if (config.usePageTransitions) {
+        if (config.usePageTransitionsWebtoon) {
             recycler.smoothScrollBy(0, scrollDistance)
         } else {
             recycler.scrollBy(0, scrollDistance)
