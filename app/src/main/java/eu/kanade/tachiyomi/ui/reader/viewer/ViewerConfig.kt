@@ -18,8 +18,6 @@ abstract class ViewerConfig(preferences: PreferencesHelper, private val scope: C
     var tappingEnabled = true
     var tappingInverted = TappingInvertMode.NONE
     var longTapEnabled = true
-    var usePageTransitionsPager = false
-    var usePageTransitionsWebtoon = false
     var doubleTapAnimDuration = 500
     var volumeKeysEnabled = false
     var volumeKeysInverted = false
@@ -39,12 +37,6 @@ abstract class ViewerConfig(preferences: PreferencesHelper, private val scope: C
 
         preferences.readWithLongTap()
             .register({ longTapEnabled = it })
-
-        preferences.pageTransitionsPager()
-            .register({ usePageTransitionsPager = it })
-
-        preferences.pageTransitionsWebtoon()
-            .register({ usePageTransitionsWebtoon = it })
 
         preferences.doubleTapAnimSpeed()
             .register({ doubleTapAnimDuration = it })
